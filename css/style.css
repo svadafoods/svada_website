@@ -1492,6 +1492,30 @@ em { color: var(--teal); font-style: italic; }
   margin-bottom: 0.1rem;
 }
 
+.fssai-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.8rem; /* Adjusted for better spacing */
+  margin-bottom: 1.2rem; /* Spacing before social row */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.fssai-logo {
+  height: 30px; /* Adjust size as needed */
+  width: auto;
+  object-fit: contain;
+  filter: invert(80%) grayscale(100%) brightness(150%); /* To make it visible on dark background */
+}
+
+.fssai-license-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+  margin: 0; /* Override default p margin */
+}
+
 .footer-social-row {
   display: flex;
   gap: 0.6rem;
