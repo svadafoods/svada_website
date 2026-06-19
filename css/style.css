@@ -307,7 +307,7 @@ em { color: var(--teal); font-style: italic; }
   height: 55px;
 }
 .logo-img {
-  height: 150px;
+  height: 180px; /* Increased from 150px */
   width: auto;
   border-radius: 0;
   object-fit: contain;
@@ -1486,7 +1486,7 @@ em { color: var(--teal); font-style: italic; }
 }
 
 .footer-logo {
-  height: 95px;
+  height: 120px; /* Increased from 95px */
   width: auto;
   margin-left: -4px; /* Optical alignment */
   margin-bottom: 0.1rem;
