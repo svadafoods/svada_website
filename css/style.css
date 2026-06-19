@@ -1494,11 +1494,12 @@ em { color: var(--teal); font-style: italic; }
 
 .fssai-info {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the start (left) */
+  gap: 5px; /* Reduced gap for closer vertical spacing */
   margin-top: 0.8rem; /* Adjusted for better spacing */
   margin-bottom: 1.2rem; /* Spacing before social row */
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  /* flex-wrap: wrap; removed as column layout handles wrapping differently */
 }
 
 .fssai-logo {
