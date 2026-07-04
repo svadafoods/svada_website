@@ -318,6 +318,15 @@ em { color: var(--teal); font-style: italic; }
   margin-bottom: -16px;
 }
 
+@media (max-width: 600px) {
+  .logo-img {
+    height: 85px;
+    margin-left: -10px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+  }
+}
+
 .nav-links {
   display: flex; gap: 2.2rem;
   list-style: none;
@@ -634,10 +643,16 @@ em { color: var(--teal); font-style: italic; }
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 160px 1.5rem 4rem;
+    padding: 120px 1.5rem 3rem;
+    min-height: auto;
+
+    background-size: 170%;              /* zoomed out slightly from 200% */
+    background-position: 90% 0%;        /* unchanged — same framing */
+    background-repeat: no-repeat;
+    background-color: #cfe8de;
   }
   .hero-overlay {
-    background: radial-gradient(circle, rgba(250, 248, 243, 0.95) 0%, rgba(250, 248, 243, 0.85) 60%, rgba(250, 248, 243, 0.7) 100%);
+    background: radial-gradient(circle, rgba(250, 248, 243, 0.4) 0%, rgba(250, 248, 243, 0.25) 60%, rgba(250, 248, 243, 0.1) 100%);
   }
   .hero-content {
     justify-content: center;
@@ -647,7 +662,13 @@ em { color: var(--teal); font-style: italic; }
     text-align: center;
     margin: 0 auto;
   }
+  .hero-headline {
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.45);
+  }
   .hero-sub {
+    color: #fff;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.4);
     margin: 0 auto 2rem;
   }
   .hero-actions {
@@ -672,6 +693,19 @@ em { color: var(--teal); font-style: italic; }
   color: rgba(255,255,255,0.95);
   padding: 0 3rem;
   flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .marquee-track span {
+    font-size: 0.95rem;
+    padding: 0 1.2rem;
+  }
+  .announcement-track span {
+    padding: 0 1.5rem;
+  }
+  .health-item {
+    margin: 0 1.2rem;
+  }
 }
 
 /* ---------- ABOUT SECTION ---------- */
@@ -1511,11 +1545,15 @@ em { color: var(--teal); font-style: italic; }
 }
 
 @media (max-width: 600px) {
-  .size-cards { gap: 1rem; }
-  .size-card { min-width: 130px; padding: 1.5rem 1.2rem; }
+  .size-cards { gap: 0.6rem; }
+  .size-card { min-width: 0; flex: 1 1 0; padding: 1.1rem 0.6rem; }
   .size-card.featured { transform: scale(1); }
   .size-card.featured:hover { transform: translateY(-6px); }
-  .size-price { font-size: 1.5rem; }
+  .size-label { font-size: 0.75rem; }
+  .size-gms { font-size: 0.8rem; }
+  .size-price { font-size: 1.25rem; }
+  .size-tag { font-size: 0.55rem; padding: 0.25rem 0.6rem; }
+  .add-to-cart-btn { padding: 0.55rem 0.4rem; font-size: 0.7rem; }
 }
 /* ---------- STATS BAR ---------- */
 /* ---------- PARTNER MARQUEE ---------- */
@@ -1630,11 +1668,19 @@ em { color: var(--teal); font-style: italic; }
   justify-content: center;
   width: 38px;
   height: 38px;
+  color: #ffffff;
+  transition: all 0.3s var(--transition);
+}
+
+.social-circle-btn {
   background: transparent;
   border: 1.5px solid rgba(255,255,255,0.18);
   border-radius: 50%;
-  color: #ffffff;
-  transition: all 0.3s var(--transition);
+}
+
+.contact-info-icon {
+  background: transparent;
+  border: none;
 }
 
 .social-circle-btn svg, .contact-info-icon svg {
@@ -1657,9 +1703,23 @@ em { color: var(--teal); font-style: italic; }
 .contact-info-item {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 0.4rem;
 }
-
+.contact-info-item.address-item {
+  align-items: flex-start;
+}
+.contact-info-item.address-item .contact-info-icon {
+  flex-shrink: 0;
+  margin-top: -2px;
+  
+  flex-shrink: 0;
+}
+.contact-info-item .contact-info-icon {
+  flex-shrink: 0;
+}
+.contact-info-item p {
+  margin-bottom: 0 !important;
+}
 .contact-info-item a {
   color: #ffffff !important;
   font-size: 1rem;
@@ -1720,13 +1780,6 @@ em { color: var(--teal); font-style: italic; }
   padding: 0 1.5rem;
 }
 
-@media (max-width: 900px) {
-  .sv-compare-list {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
 /* Block 1: Intro */
 .sv-intro {
   text-align: center;
@@ -1750,6 +1803,13 @@ em { color: var(--teal); font-style: italic; }
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem 4rem;
   margin-top: 4rem;
+}
+
+@media (max-width: 900px) {
+  .sv-compare-list {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 .sv-compare-card {
@@ -1892,11 +1952,9 @@ em { color: var(--teal); font-style: italic; }
   .sv-ingredient-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 }
 @media (max-width: 600px) {
-  .sv-ingredient-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 580px) {
-  .sv-ingredient-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .sv-ing-card { min-height: 170px; padding: 1.5rem 1rem; }
+  .sv-ing-name { font-size: 0.88rem; }
+  .sv-ing-desc { font-size: 0.8rem; }
 }
 
 
@@ -2212,4 +2270,97 @@ body.cart-open { overflow: hidden; }
 
 @media (max-width: 480px) {
   .cart-drawer { width: 100%; }
+}
+
+/* ============================================
+   MOBILE SECTION SPACING FIX
+   These big sections keep their full desktop
+   top/bottom padding (7-8rem = 112-128px) on
+   every screen size because no mobile override
+   existed for them. On a phone that much empty
+   space per section is what makes the page feel
+   "zoomed in" — you only ever see a sliver of a
+   section per screen and have to scroll forever.
+   ============================================ */
+@media (max-width: 900px) {
+  .about-section      { padding: 5rem 1.5rem; }
+  .flavors-section     { padding: 4.5rem 1.5rem; }
+  .product-showcase    { padding: 5rem 1.5rem; }
+  .fries-section        { padding: 4.5rem 1.5rem; }
+  .cta-section          { padding: 5rem 0 0; }
+  .footer               { padding: 5rem 1.5rem 3rem; }
+  .sv-compare-premium   { padding: 5rem 0; }
+}
+
+@media (max-width: 600px) {
+  .about-section      { padding: 4.5rem 1.5rem; }
+  .flavors-section     { padding: 4.5rem 1.5rem; }
+  .product-showcase    { padding: 4.5rem 1.5rem; }
+  .fries-section        { padding: 4.5rem 1.5rem; }
+  .cta-section          { padding: 4.5rem 0 0; }
+  .footer               { padding: 4.5rem 1.5rem 3rem; }
+  /* .sv-compare-premium already gets padding: 6rem 0 from its own 600px rule above */
+}
+
+/* ============================================
+   FLAVOR CARDS: keep a real 2-column grid on
+   mobile instead of "auto-fill, minmax(260px)"
+   collapsing every card to full width (which is
+   why they were stacking one-per-row like a list
+   instead of a grid like on desktop).
+   ============================================ */
+@media (max-width: 700px) {
+  .flavors-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .flavor-card { padding: 1.75rem 1.5rem; }
+  .flavor-3d-wrap { width: 120px; height: 120px; margin-bottom: 1.25rem; }
+  .flavor-fruit-img { width: 150px; height: 150px; }
+  .flavor-info h3 { font-size: 1.2rem; }
+  .flavor-info p { font-size: 0.92rem; margin-bottom: 0.9rem; }
+  .flavor-tag { font-size: 0.68rem; padding: 0.32rem 0.8rem; }
+}
+
+/* ============================================
+   "DIFFERENCE IN EVERY BITE" comparison list:
+   keep it 2-up on mobile (like desktop) instead
+   of collapsing to a single stacked column.
+   ============================================ */
+@media (max-width: 900px) and (min-width: 481px) {
+  .sv-compare-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.25rem;
+  }
+  .sv-compare-card { gap: 1.1rem; padding: 1rem 0; }
+  .sv-card-icon-box { width: 72px; height: 72px; }
+  .sv-card-content h3 { font-size: 1.1rem; }
+  .sv-card-content p { font-size: 0.88rem; }
+}
+/* ============================================
+   SMALL PHONES (<=480px): keep icon-beside-text
+   like desktop instead of stacking icon on top —
+   the double-stacking (column card + 1-col grid)
+   was what created the huge gap between points.
+   ============================================ */
+@media (max-width: 480px) {
+  .sv-compare-premium { padding: 3rem 0; }
+
+  .sv-compare-list {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .sv-compare-card {
+    flex-direction: row;   /* override the column flip from the 600px rule */
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+  }
+  .sv-card-icon-box {
+    width: 60px;
+    height: 60px;
+  }
+  .sv-card-icon-box svg { width: 32px; height: 32px; }
+  .sv-card-content h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+  .sv-card-content p { font-size: 0.85rem; line-height: 1.4; }
 }
