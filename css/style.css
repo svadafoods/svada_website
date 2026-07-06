@@ -150,7 +150,19 @@ em { color: var(--teal); font-style: italic; }
 }
 .section-sub.center { text-align: center; margin: 0 auto 2.5rem; }
 
-.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+/* Update your existing container or insert this snippet */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem; /* Laptop/Desktop default */
+}
+
+/* Adjust padding for Tabs and Mobiles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem; /* Saves 32px of width on smaller viewports */
+  }
+}
 
 /* ---------- BUTTONS ---------- */
 .btn-primary {
@@ -663,8 +675,8 @@ em { color: var(--teal); font-style: italic; }
     margin: 0 auto;
   }
   .hero-headline {
-    color: #fff;
-    text-shadow: 0 2px 16px rgba(0,0,0,0.45);
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.45);
   }
   .hero-sub {
     color: #fff;
