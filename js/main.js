@@ -267,8 +267,10 @@ window.addEventListener('load', () => {
   function renderCart() {
     // badge
     const count = cartItemCount();
-    cartCountEl.textContent = count;
-    cartCountEl.style.display = count > 0 ? 'flex' : 'none';
+    if (cartCountEl) {
+      cartCountEl.textContent = count;
+      cartCountEl.style.display = count > 0 ? 'flex' : 'none';
+    }
 
     // View Cart button only appears once something's been added
     openCartBtn?.classList.toggle('show', count > 0);
@@ -318,6 +320,7 @@ window.addEventListener('load', () => {
   }
 
   function bumpCartCount() {
+    if (!cartCountEl) return;
     cartCountEl.classList.remove('bump');
     void cartCountEl.offsetWidth; // restart animation
     cartCountEl.classList.add('bump');
@@ -378,21 +381,53 @@ window.addEventListener('load', () => {
   /* ---------- INIT ---------- */
   renderCart();
 })();
-/* ---------- FAQ ACCORDION ---------- */
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item   = btn.closest('.faq-item');
-    const answer = item.querySelector('.faq-answer');
-    const isOpen = item.classList.contains('open');
 
-    if (isOpen) {
-      item.classList.remove('open');
-      answer.style.maxHeight = null;
-      btn.setAttribute('aria-expanded', 'false');
-    } else {
-      item.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-      btn.setAttribute('aria-expanded', 'true');
-    }
+/* ============================================
+   FAQ ACCORDION
+   ============================================ */
+(function initFaqAccordion() {
+  const faqButtons = document.querySelectorAll('.faq-question');
+
+  if (!faqButtons.length) return;
+
+  function closeFaq(button) {
+    const item = button.closest('.faq-item');
+    const answerId = button.getAttribute('aria-controls');
+    const answer = answerId ? document.getElementById(answerId) : null;
+
+    if (!item || !answer) return;
+
+    item.classList.remove('open');
+    button.setAttribute('aria-expanded', 'false');
+    answer.setAttribute('aria-hidden', 'true');
+  }
+
+  function openFaq(button) {
+    const item = button.closest('.faq-item');
+    const answerId = button.getAttribute('aria-controls');
+    const answer = answerId ? document.getElementById(answerId) : null;
+
+    if (!item || !answer) return;
+
+    item.classList.add('open');
+    button.setAttribute('aria-expanded', 'true');
+    answer.setAttribute('aria-hidden', 'false');
+  }
+
+  faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+      // Keep only one answer open at a time.
+      faqButtons.forEach(otherButton => {
+        if (otherButton !== button) closeFaq(otherButton);
+      });
+
+      if (isOpen) {
+        closeFaq(button);
+      } else {
+        openFaq(button);
+      }
+    });
   });
-});
+})();
