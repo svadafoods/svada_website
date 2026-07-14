@@ -2389,7 +2389,6 @@ body.cart-open { overflow: hidden; }
   gap: 0.75rem;
 }
 
-/* Header Order Now button */
 .header-order-btn {
   min-height: 44px;
   display: inline-flex;
@@ -2402,7 +2401,6 @@ body.cart-open { overflow: hidden; }
   background: var(--gold);
   color: var(--dark);
 
-  /* Change the Order Now font here */
   font-family: 'Poppins', sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
@@ -2410,17 +2408,17 @@ body.cart-open { overflow: hidden; }
   line-height: 1;
   white-space: nowrap;
 
-  box-shadow: 0 6px 20px rgba(7, 77, 63, 0.22);
+  box-shadow: none;
+
   transition:
     transform 0.2s var(--transition),
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.2s ease;
 }
 
 .header-order-btn:hover {
   background: var(--gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(7, 77, 63, 0.3);
+  box-shadow: none;
 }
 
 .header-order-btn:active {
